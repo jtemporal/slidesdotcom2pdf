@@ -1,6 +1,7 @@
 import argparse
 import os
 import time
+import datetime
 
 from fpdf import FPDF
 from io import BytesIO
@@ -65,7 +66,9 @@ def main(url):
     driver.quit()
 
 
-def topdf(filename='myslides.pdf'):
+def topdf(filename='myslides'):
+    now = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
+    filename = ('{}_{}{}'.format(now, filename, '.pdf'))
     images = []
     for (dirpath, dirnames, filenames) in os.walk('.'):
         images.extend(filenames)
