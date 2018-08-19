@@ -8,10 +8,13 @@ from io import BytesIO
 from PIL import Image
 from selenium import webdriver
 from selenium.common.exceptions import ElementNotInteractableException
+from selenium.webdriver import FirefoxOptions
 
 
 def setup(url):
-    wd = webdriver.Firefox()
+    opts = FirefoxOptions()
+    opts.add_argument("--headless")
+    wd = webdriver.Firefox(firefox_options=opts)
 
     try:
         wd.get(url)
@@ -84,6 +87,10 @@ def topdf(filename='myslides'):
     pdf.output(filename, 'F')
 
 
+def remove_temps():
+    os.system('rm -rf *.png *.log') 
+
+
 if __name__ == '__main__':
     decription = 'Create pdf files from slides.com presentation'
     parser = argparse.ArgumentParser(description=decription)
@@ -94,4 +101,6 @@ if __name__ == '__main__':
     main(args.slidesurl)
     print('>>>>> criando pdf')
     topdf()
+    print('>>>>>> removendo intermediários')
+    remove_temps()
     print('>>>>> the end')

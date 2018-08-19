@@ -15,7 +15,7 @@ Things to improve:
 
 ```
 pip install -r requirements.txt
-python src/sdc3pdf.py https://slides.com/jtemporal/cdcotidiano/#/
+python src/sdc2pdf.py https://slides.com/jtemporal/cdcotidiano/#/
 ```
 
 You'll also need geckodriver and firefox installed:
