@@ -77,6 +77,7 @@ def main(url):
             time.sleep(2)
 
         if not right.is_enabled() and not down.is_enabled():
+            screenshooting(driver, str(page).zfill(2))
             presentation = False
 
     driver.quit()
