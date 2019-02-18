@@ -1,16 +1,20 @@
 import argparse
 import os
 import time
+import datetime
 
 from fpdf import FPDF
 from io import BytesIO
 from PIL import Image
 from selenium import webdriver
 from selenium.common.exceptions import ElementNotInteractableException
+from selenium.webdriver import FirefoxOptions
 
 
 def setup(url):
-    wd = webdriver.Firefox()
+    opts = FirefoxOptions()
+    opts.add_argument("--headless")
+    wd = webdriver.Firefox(firefox_options=opts)
 
     try:
         wd.get(url)
@@ -66,7 +70,6 @@ def main(url):
             time.sleep(2)
             screenshooting(driver, str(page).zfill(2))
             page += 1
-            print(page)
             down = driver.find_element_by_class_name('navigate-down')
 
         if right.is_enabled() and not down.is_enabled():
@@ -79,7 +82,9 @@ def main(url):
     driver.quit()
 
 
-def topdf(filename='myslides.pdf'):
+def topdf(filename='myslides'):
+    now = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
+    filename = ('{}_{}{}'.format(now, filename, '.pdf'))
     images = []
     for (dirpath, dirnames, filenames) in os.walk('.'):
         images.extend(filenames)
@@ -95,6 +100,10 @@ def topdf(filename='myslides.pdf'):
     pdf.output(filename, 'F')
 
 
+def remove_temps():
+    os.system('rm -rf *.png *.log')
+
+
 if __name__ == '__main__':
     decription = 'Create pdf files from slides.com presentation'
     parser = argparse.ArgumentParser(description=decription)
@@ -106,4 +115,6 @@ if __name__ == '__main__':
     main(args.slidesurl)
     print('>>>>> criando pdf')
     topdf()
+    print('>>>>>> removendo intermediários')
+    remove_temps()
     print('>>>>> the end')
