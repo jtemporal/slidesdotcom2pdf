@@ -51,7 +51,7 @@ def main(url):
     presentation = True
     page = 1
 
-    driver.fullscreen_window()
+    driver.find_element_by_class_name('fullscreen-button').click()
     while presentation:
         time.sleep(2)
         screenshooting(driver, str(page).zfill(2))
@@ -86,11 +86,11 @@ def topdf(filename='myslides.pdf'):
         break
     images.sort()
     images = [image for image in images if 'screenshot' in image]
-    pdf = FPDF('L', 'mm', (170, 297))
+    pdf = FPDF('L', 'mm', (167, 297))
     pdf.set_margins(0,0,0)
     for image in images:
         pdf.add_page()
-        pdf.image(image, y=10, w=297)
+        pdf.image(image, y=0, w=297)
         print(image)
     pdf.output(filename, 'F')
 
