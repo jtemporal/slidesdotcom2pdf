@@ -48,19 +48,33 @@ def screenshooting(d, page):
 
 def main(url):
     driver = setup(url)
-    loop = True
+    presentation = True
     page = 1
 
     driver.fullscreen_window()
-    while loop:
-        time.sleep(10)
+    while presentation:
+        time.sleep(2)
         screenshooting(driver, str(page).zfill(2))
         page += 1
-        try:
-            driver.find_element_by_class_name('navigate-down').click()
-        except ElementNotInteractableException:
-            loop = False
-            print('fim da apresentação')
+
+        down = driver.find_element_by_class_name('navigate-down')
+        right = driver.find_element_by_class_name('navigate-right')
+
+
+        if down.is_enabled():
+            down.click()
+            time.sleep(2)
+            screenshooting(driver, str(page).zfill(2))
+            page += 1
+            print(page)
+            down = driver.find_element_by_class_name('navigate-down')
+
+        if right.is_enabled() and not down.is_enabled():
+            right.click()
+            time.sleep(2)
+
+        if not right.is_enabled() and not down.is_enabled():
+            presentation = False
 
     driver.quit()
 
@@ -84,8 +98,9 @@ def topdf(filename='myslides.pdf'):
 if __name__ == '__main__':
     decription = 'Create pdf files from slides.com presentation'
     parser = argparse.ArgumentParser(description=decription)
+    url = 'https://slides.com/jtemporal/test/#/'
     parser.add_argument('slidesurl', metavar='s', type=str,
-                        help='url for the slides')
+            help='url for the slides', default=url)
     args = parser.parse_args()
     print('>>>>> iniciando captura da apresentação')
     main(args.slidesurl)
