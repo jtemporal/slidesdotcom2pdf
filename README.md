@@ -1,4 +1,4 @@
-# Slides.com to PDF
+# Slides.com to PDF [![Build Status](https://travis-ci.com/jtemporal/slidesdotcom2pdf.svg?branch=master)](https://travis-ci.com/jtemporal/slidesdotcom2pdf)
 
 A simple script to print out each slide and turn it into a PDF file using Selenium.
 
