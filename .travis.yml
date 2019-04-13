@@ -8,7 +8,7 @@ before_deploy:
 
 deploy:
   provider: script
-  script: ./deploy.sh slidesdotcom2pdf
+  script: deploy.sh slidesdotcom2pdf
   on:
     branch: master
 
