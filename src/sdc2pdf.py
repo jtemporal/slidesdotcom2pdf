@@ -85,7 +85,7 @@ def main(url):
 
 def topdf(filename='myslides'):
     now = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
-    filename = ('{}_{}{}'.format(now, filename, '.pdf'))
+    filename = ('/tmp/result/{}_{}{}'.format(now, filename, '.pdf'))
     images = []
     for (dirpath, dirnames, filenames) in os.walk('.'):
         images.extend(filenames)
