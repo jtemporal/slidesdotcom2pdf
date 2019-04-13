@@ -6,16 +6,25 @@ A simple script to print out each slide and turn it into a PDF file using Seleni
 
 Things to improve:
 
-- Dockerfile isn't finished
 - cleanup method (remove screenshots after pdf is generated)
-- add right side scroll in the process
 - improve page size genereation
 
 ## Usage
 
+### With Docker
+
+Docker is the recommended way to use this.
+
+```
+docker pull slidesdotcom2pdf
+docker run --rm --name sdc -v $(pwd)/slides:/tmp/result slidesdotcom2pdf http://slides.com/jtemporal/test
+```
+
+### Without Docker
+
 ```
 pip install -r requirements.txt
-python src/sdc2pdf.py https://slides.com/jtemporal/cdcotidiano/#/
+python src/sdc2pdf.py http://slides.com/jtemporal/test
 ```
 
 You'll also need geckodriver and firefox installed:
