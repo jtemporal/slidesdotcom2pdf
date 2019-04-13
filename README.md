@@ -40,3 +40,11 @@ curl -L https://github.com/mozilla/geckodriver/releases/download/v0.19.1/geckodr
 ```
 curl -L https://download-installer.cdn.mozilla.net/pub/firefox/releases/56.0.2/linux-x86_64/pt-BR/firefox-$FIREFOX_VERSION.tar.bz2 | tar xj && sudo mv firefox /opt/firefox/ && ln -s /opt/firefox/firefox /usr/bin/firefox
 ```
+
+## Development
+
+to build:
+
+```
+docker build -t slidesdotcom2pdf .
+```
