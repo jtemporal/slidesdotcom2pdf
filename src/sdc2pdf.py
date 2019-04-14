@@ -15,6 +15,7 @@ def setup(url):
     opts = FirefoxOptions()
     opts.add_argument("--headless")
     wd = webdriver.Firefox(firefox_options=opts)
+    time.sleep(2)
 
     try:
         wd.get(url)
