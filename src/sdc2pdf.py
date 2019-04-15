@@ -50,6 +50,7 @@ def screenshooting(d, page):
 
     im = im.crop((left, top, right, bottom)) # defines crop points
     im.save(f'screenshot_{page}.png') # saves new cropped image
+    print(f'screenshooting screenshot_{page}.png')
 
 
 def main(url):
