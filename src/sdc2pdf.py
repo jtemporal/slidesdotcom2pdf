@@ -93,12 +93,17 @@ def topdf(filename='myslides'):
         break
     images.sort()
     images = [image for image in images if 'screenshot' in image]
-    pdf = FPDF('L', 'mm', (167, 297))
+
+    # https://www.daniweb.com/posts/jump/1271752
+    image_file = images[0]
+    img = Image.open(image_file)
+    width, height = img.size
+
+    pdf = FPDF('L', 'mm', (height, width))
     pdf.set_margins(0,0,0)
     for image in images:
         pdf.add_page()
-        pdf.image(image, y=0, w=297)
-        print(image)
+        pdf.image(image, y=0, w=width)
     pdf.output(filename, 'F')
 
 
