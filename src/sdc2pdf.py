@@ -60,22 +60,20 @@ def main(url):
 
     driver.find_element_by_class_name('fullscreen-button').click()
     while presentation:
-        time.sleep(2)
-        screenshooting(driver, str(page).zfill(2))
-        page += 1
-
         down = driver.find_element_by_class_name('navigate-down')
         right = driver.find_element_by_class_name('navigate-right')
 
 
         if down.is_enabled():
+            screenshooting(driver, str(page).zfill(2))
             down.click()
             time.sleep(2)
-            screenshooting(driver, str(page).zfill(2))
             page += 1
             down = driver.find_element_by_class_name('navigate-down')
 
         if right.is_enabled() and not down.is_enabled():
+            screenshooting(driver, str(page).zfill(2))
+            page += 1
             right.click()
             time.sleep(2)
 
