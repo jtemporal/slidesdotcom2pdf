@@ -16,14 +16,14 @@ Things to improve:
 Docker is the recommended way to use this.
 
 ```
-docker pull slidesdotcom2pdf
-docker run --rm --name sdc -v $(pwd)/slides:/tmp/result slidesdotcom2pdf http://slides.com/jtemporal/test
+docker pull jtemporal/slidesdotcom2pdf
+docker run --rm --name sdc -v $(pwd)/slides:/tmp/result jtemporal/slidesdotcom2pdf http://slides.com/jtemporal/test
 ```
 
 ### Without Docker
 
 ```
-pip install -r requirements.txt
+pip install -r src/requirements.txt
 python src/sdc2pdf.py http://slides.com/jtemporal/test
 ```
 
