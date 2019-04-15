@@ -4,10 +4,9 @@ A simple script to print out each slide and turn it into a PDF file using Seleni
 
 ## TODOs
 
-Things to improve:
+Things to improve: Checkout [the open issues](https://github.com/jtemporal/slidesdotcom2pdf/issues)
 
-- cleanup method (remove screenshots after pdf is generated)
-- improve page size genereation
+
 
 ## Usage
 
