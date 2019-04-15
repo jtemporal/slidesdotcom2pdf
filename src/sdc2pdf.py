@@ -26,6 +26,7 @@ def setup(url):
         "var el = document.getElementsByClassName('pill'); el[0].remove(); el[0].remove();",
         "var el = document.getElementsByClassName('kudos-button'); el[0].remove();",
         "var el = document.getElementsByClassName('progress'); el[0].remove();"
+        "var el = document.getElementsByClassName('fullscreen-button'); el[0].removeAttribute('data-tooltip');",
     ]
     for s in scripts:
         wd.execute_script(s)
