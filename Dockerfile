@@ -13,8 +13,12 @@ RUN curl -L https://download-installer.cdn.mozilla.net/pub/firefox/releases/$FIR
 RUN curl -L https://github.com/mozilla/geckodriver/releases/download/$GECKODRIVER_VERSION/geckodriver-$GECKODRIVER_VERSION-linux64.tar.gz | tar xz &&\
     mv geckodriver /usr/bin/geckodriver
 
-WORKDIR /app/
-COPY src/ .
-RUN pip install -r requirements.txt --no-cache-dir
 RUN mkdir /tmp/result
+RUN pip install -U pip
+
+WORKDIR /app/
+COPY src/requirements.txt .
+RUN pip install -r requirements.txt --no-cache-dir
+
+COPY src/sdc2pdf.py .
 ENTRYPOINT ["python", "sdc2pdf.py"]
