@@ -118,10 +118,10 @@ if __name__ == '__main__':
     parser.add_argument('slidesurl', metavar='s', type=str,
             help='url for the slides', default=url)
     args = parser.parse_args()
-    print('>>>>> iniciando captura da apresentação')
+    print('>>>>> initiating the capture of the presentation')
     main(args.slidesurl)
-    print('>>>>> criando pdf')
+    print('>>>>> creating the pdf')
     topdf()
-    print('>>>>>> removendo intermediários')
+    print('>>>>>> removing intermediates')
     remove_temps()
     print('>>>>> the end')
